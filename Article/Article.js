@@ -88,6 +88,39 @@ const data = [
   }
 ];
 
+function createArticle(titleArg, dateArg, firstParagraphArg, secondParagraphArg, thirdParagraphArg) {
+  const article = document.createElement('div');
+  const h2 = document.createElement('h2');
+  const date = document.createElement('p');
+  const p1 = document.createElement('p');
+  const p2 = document.createElement('p');
+  const p3 = document.createElement('p');
+  const expandBtn = document.createElement('span');
+
+  article.append(h2);
+  article.append(date);
+  article.append(p1);
+  article.append(p2);
+  article.append(p3);
+  article.append(expandBtn);
+
+  article.classList.add('article');
+  date.classList.add('date');
+  expandBtn.classList.add('expandButton');
+
+  h2.textContent = titleArg;
+  date.textContent = dateArg;
+  p1.textContent = firstParagraphArg;
+  p2.textContent = secondParagraphArg;
+  p3.textContent = thirdParagraphArg;
+
+
+  return article;
+}
+
+const articles = document.querySelector('.articles');
+data.forEach(e => articles.append(createArticle(e.title, e.date, e.firstParagraph, e.secondParagraph, e.thirdParagraph)));
+
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
   <div class="article">
@@ -102,6 +135,8 @@ const data = [
   Hint: You will need to use createElement more than once here!
 
   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
+
+
 
   Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
 
