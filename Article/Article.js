@@ -85,10 +85,25 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Zak Touzri',
+    date: 'Jan 1st, 2000',
+    firstParagraph: `bruh??bruh?bruh?bruh?bruh?bruh?bruh?bruh?bruh?bruh??bruh?bruh?bruh?bruh?bruh?bruh?bruh?bruh?bruh??bruh?bruh?bruh?bruh?bruh?bru
+    bruh??bruh?bruh?bruh?bruh?bruh?bruh?bruh?bruh?bruh??bruh?bruh?bruh?bruh?bruh?bruh?bruh?bruh?bruh??bruh?bruh?bruh?bruh?bruh?bruh?bruh?bruh?bru
+    bruh??bruh?bruh?bruh?bruh?bruh?bruh?bruh?bruh?bruh??bruh?bruh?bruh?bruh?bruh?bruh?bruh?bruh?bruh??bruh?bruh?bruh?bruh?bruh?bruh?bruh?bruh? `,
+
+    secondParagraph: `bruh??bruh?bruh?bruh?bruh?bruh?bruh?bruh?bruh?bruh??bruh?bruh?bruh?bruh?bruh?bruh?bruh?bruh?bruh??bruh?bruh?bruh?bruh?bruh?bru
+    bruh??bruh?bruh?bruh?bruh?bruh?bruh?bruh?bruh?bruh??bruh?bruh?bruh?bruh?bruh?bruh?bruh?bruh?bruh??bruh?bruh?bruh?bruh?bruh?bruh?bruh?bruh?bru
+    bruh??bruh?bruh?bruh?bruh?bruh?bruh?bruh?bruh?bruh??bruh?bruh?bruh?bruh?bruh?bruh?bruh?bruh?bruh??bruh?bruh?bruh?bruh?bruh?bruh?bruh?bruh?  `,
+
+    thirdParagraph: `bruh??bruh?bruh?bruh?bruh?bruh?bruh?bruh?bruh?bruh??bruh?bruh?bruh?bruh?bruh?bruh?bruh?bruh?bruh??bruh?bruh?bruh?bruh?bruh?bru
+    bruh??bruh?bruh?bruh?bruh?bruh?bruh?bruh?bruh?bruh??bruh?bruh?bruh?bruh?bruh?bruh?bruh?bruh?bruh??bruh?bruh?bruh?bruh?bruh?bruh?bruh?bruh?bru
+    bruh??bruh?bruh?bruh?bruh?bruh?bruh?bruh?bruh?bruh??bruh?bruh?bruh?bruh?bruh?bruh?bruh?bruh?bruh??bruh?bruh?bruh?bruh?bruh?bruh?bruh?bruh? .`
   }
 ];
 
-function createArticle(titleArg, dateArg, firstParagraphArg, secondParagraphArg, thirdParagraphArg) {
+function createArticle(dataArg) {
   const article = document.createElement('div');
   const h2 = document.createElement('h2');
   const date = document.createElement('p');
@@ -107,19 +122,27 @@ function createArticle(titleArg, dateArg, firstParagraphArg, secondParagraphArg,
   article.classList.add('article');
   date.classList.add('date');
   expandBtn.classList.add('expandButton');
+  
 
-  h2.textContent = titleArg;
-  date.textContent = dateArg;
-  p1.textContent = firstParagraphArg;
-  p2.textContent = secondParagraphArg;
-  p3.textContent = thirdParagraphArg;
+  h2.textContent = dataArg.title;
+  date.textContent = dataArg.date;
+  p1.textContent = dataArg.firstParagraph;
+  p2.textContent = dataArg.secondParagraph;
+  p3.textContent = dataArg.thirdParagraph;
+  expandBtn.textContent = "EXPAND";
 
-
+  expandBtn.addEventListener('click', event => {
+    article.classList.toggle('article-open')
+  })
   return article;
 }
 
 const articles = document.querySelector('.articles');
-data.forEach(e => articles.append(createArticle(e.title, e.date, e.firstParagraph, e.secondParagraph, e.thirdParagraph)));
+data.forEach(d => articles.append(createArticle(d)));
+// const article = document.querySelector('.article')
+// article.addEventListener('click', event => {
+//   article.classList.toggle('article-open')
+// })
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
