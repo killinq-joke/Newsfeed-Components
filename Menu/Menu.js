@@ -9,6 +9,64 @@ let menuItems = [
   'Log Out'
 ];
 
+function createMenu(dataArg) {
+  const menu = document.createElement('div');
+  const list = document.createElement('ul');
+  const li1 = document.createElement('li');
+  const li2 = document.createElement('li');
+  const li3 = document.createElement('li');
+  const li4 = document.createElement('li');
+  const li5 = document.createElement('li');
+  const li6 = document.createElement('li');
+  
+  menu.append(list);
+  list.append(li1);
+  list.append(li2);
+  list.append(li3);
+  list.append(li4);
+  list.append(li5);
+  list.append(li6);
+
+  menu.classList.add('menu');
+
+  // const arrList = document.querySelectorAll('.menu li');
+ 
+  // for(let i = 0; i < dataArg.length; i++ ) {
+  //   arrList[i].textContent = dataArg[i];
+  // }
+  li1.textContent = dataArg[0];
+  li2.textContent = dataArg[1];
+  li3.textContent = dataArg[2];
+  li4.textContent = dataArg[3];
+  li5.textContent = dataArg[4];
+  li6.textContent = dataArg[5];
+  const menuBtn = document.querySelector('img.menu-button');
+  console.log(menu);
+  menuBtn.addEventListener('click', e => {
+    
+    menu.classList.toggle('menu--open');
+  })
+  
+
+  return menu;
+}
+// const menuCon = createMenu(menuItems);
+// console.log(createMenu(menuItems));
+console.log(createMenu(menuItems));
+document.querySelector('body').append(createMenu(menuItems));
+
+// console.log(createMenu(menuItems));
+
+// console.log(menu);
+// const arrList = document.querySelectorAll('.menu li');
+
+
+// menuItems.forEach(d => .append(createMenu(d)));
+
+
+  // console.log(arrList);
+
+
 /* 
 
   Step 1: Write a function that will create a menu component as seen below:
